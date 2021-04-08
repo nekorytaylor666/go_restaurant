@@ -15,12 +15,28 @@
           tempore!
         </p>
       </div>
+      <div class="mt-10 flex items-center justify-between">
+        <span class="text-green text-3xl font-bold font-display"> 2990 <span class="text-sm">KZT</span> </span>
+        <button
+          @click.prevent="addToCart"
+          class="font-sans bg-green text-yellow font-bold text-lg text-center py-2 px-6 rounded-lg"
+        >
+          Add to cart
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    addToCart() {
+      this.$store.dispatch("addItemCart", { title: "Bacon test", price: 2930 });
+      this.$swal("Added to cart!");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

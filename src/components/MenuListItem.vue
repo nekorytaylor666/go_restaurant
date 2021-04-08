@@ -1,6 +1,6 @@
 <template>
   <div class="mb-8">
-    <router-link :to="`/${1}`">
+    <router-link :to="`/product/${1}`">
       <img class="h-52 rounded-lg w-full object-cover" src="@/assets/images/soup.jpg" alt="soup" />
     </router-link>
     <div class="mt-2 flex justify-between items-center">
