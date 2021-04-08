@@ -2,7 +2,7 @@
   <div class="order-container">
     <div class="relative row-start-1 row-end-3 col-start-1">
       <div class="w-full absolute top-0 h-16 bg-gradient-to-b from-black opacity-60"></div>
-      <img class="w-full h-72 object-cover" src="../assets/images/soup.jpg" alt="soup" />
+      <img class="w-full h-full object-cover" src="../assets/images/soup.jpg" alt="soup" />
     </div>
     <div class="bg-yellow p-4 rounded-xl z-10 row-start-2 row-end-4 col-start-1">
       <div class="flex flex-col items-center my-4">
