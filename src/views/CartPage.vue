@@ -4,9 +4,9 @@
     <ul class="space-y-4 mt-10">
       <li v-for="(cartItem, index) in cart" :key="index" class="w-full flex items-center px-8">
         <div class="flex items-center justify-start">
-          <img class="w-16 h-16 rounded-full mr-4" src="../assets/images/sandwich.jpg" alt="sandwich" />
+          <img class="w-16 h-16 rounded-full mr-4 object-cover" :src="cartItem.photoUrl" alt="sandwich" />
           <div class="flex flex-col items-start">
-            <span class="text-green font-bold text-xl">{{ cartItem.title }}</span>
+            <span class="text-green font-bold text-xl">{{ cartItem.name }}</span>
             <span class="text-green text-sm font-bold"> {{ cartItem.price }} <span class="text-xs">KZT</span> </span>
           </div>
         </div>
@@ -29,6 +29,8 @@
 
 <script>
 import { mapState } from "vuex";
+import gql from 'graphql-tag';
+
 export default {
   computed: {
     ...mapState([
@@ -40,8 +42,20 @@ export default {
     },
   },
   methods: {
-    sendOrder() {
+    async sendOrder() {
+      await this.$apollo.mutate({
+        mutation: gql`mutation ($food: [String!]!, $cafe_id: String!) {
+          addOrder(food: $food, cafe_id: $cafe_id) {
+            status
+          }
+        }`,
+        variables: {
+          food: this.cart.map(item => item.id),
+          cafe_id: "ef47b0d2-de99-4db1-b314-d94439b30fe3"
+        },
+      })
       this.$swal("Отправлено официанту!");
+
     },
   },
 };

@@ -1,12 +1,12 @@
 <template>
   <div class="mb-8">
-    <router-link :to="`/product/${1}`">
-      <img class="h-52 rounded-lg w-full object-cover" src="@/assets/images/soup.jpg" alt="soup" />
+    <router-link :to="`/product/${item.food_id}`">
+      <img class="h-52 rounded-lg w-full object-cover" :src="item.food_url" alt="soup" />
     </router-link>
     <div class="mt-2 flex justify-between items-center">
       <div class="flex flex-col items-start">
-        <h3 class="font-display text-2xl font-bold text-yellow text-left">Сэндвич с беконом</h3>
-        <span class="font-display italic text-yellow">₸1599</span>
+        <h3 class="font-display text-2xl font-bold text-yellow text-left">{{item.food_name}}</h3>
+        <span class="font-display italic text-yellow">₸{{item.food_price}}</span>
       </div>
       <button class="focus:outline-none">
         <svg
@@ -29,8 +29,23 @@
   </div>
 </template>
 <script>
+
+
+
 export default {
   name: "MenuListItem",
+  props: {
+    item: {
+      type: Object,
+      defaul() {
+        return {
+          name:'',
+          price: 0,
+          food_id: ''
+        }
+      }
+    }
+  }
 };
 </script>
 <style lang=""></style>
