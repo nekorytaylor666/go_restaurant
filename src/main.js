@@ -14,7 +14,7 @@ import ApolloClient from 'apollo-boost'
 
 const apolloClient = new ApolloClient({
   // You should use an absolute URL here
-  uri: 'http://285dbf2110ee.ngrok.io/graphql',
+  uri: 'https://285dbf2110ee.ngrok.io/graphql',
   fetchOptions: {
     headers: { 
       'Access-Control-Allow-Origin': '*',
